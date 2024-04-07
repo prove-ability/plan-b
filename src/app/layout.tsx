@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const myFont = localFont({
-  src: "../fonts/nanum-son_kang.ttf",
+  src: "fonts/nanum-son_kang.ttf",
   display: "swap",
 });
 
