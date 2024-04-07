@@ -19,7 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={myFont.className}>{children}</body>
+      <body
+        className={
+          myFont.className +
+          " flex min-h-screen flex-col items-center justify-between px-8"
+        }
+      >
+        {children}
+      </body>
     </html>
   );
 }
