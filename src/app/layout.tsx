@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Modal from "@/components/Modal";
 
 const myFont = localFont({
   src: "fonts/nanum-son_kang.ttf",
@@ -18,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <body
         className={
           myFont.className +
@@ -26,6 +27,7 @@ export default function RootLayout({
         }
       >
         {children}
+        <Modal />
       </body>
     </html>
   );
