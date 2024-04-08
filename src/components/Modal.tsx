@@ -1,12 +1,17 @@
 "use client";
 
 import { useModalStore } from "@/stores/modal";
+import { useEffect, useRef } from "react";
 
 export default function Modal() {
   const state = useModalStore((state) => state.modalContents);
-  if (!state) return <></>;
+  const modelEl = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    if (!state) return;
+    modelEl.current?.showModal();
+  }, [state]);
   return (
-    <dialog id="modal" className="modal">
+    <dialog id="modal" className="modal" ref={modelEl}>
       <div className="modal-box">
         <h3 className="font-bold text-lg">Hello!</h3>
         <p className="py-4">Press ESC key or click outside to close</p>
