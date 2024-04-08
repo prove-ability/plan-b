@@ -1,7 +1,6 @@
 "use client";
 
-import { useModalStore } from "@/stores/modal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Todo = {
   message: string;
@@ -10,22 +9,8 @@ type Todo = {
 export default function Todos() {
   const [todos, setTodos] = useState<Todo[]>([{ message: "Hello" }]);
 
-  const showModal = useModalStore((state) => state.showModal);
-  useEffect(() => {
-    console.log("1");
-    setTimeout(() => {
-      showModal({
-        title: "Hello!",
-        content: "Press ESC key or click outside to close",
-      });
-    }, 300);
-  }, []);
-
-  const modalContents = useModalStore((state) => state.modalContents);
-
   return (
     <>
-      {JSON.stringify(modalContents)}
       <ul>
         {todos.map((todo, id) => (
           <li key={id}>
