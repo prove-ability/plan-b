@@ -3,13 +3,20 @@
 import { FormEvent, useState } from "react";
 
 type Todo = {
+  id: number;
   message: string;
 };
 
 export default function Todos() {
-  const [todos, setTodos] = useState<Todo[]>([{ message: "Hello" }]);
+  const [id, setId] = useState(1);
+  const extractId = () => {
+    setId((id) => (id += 1));
+    return id;
+  };
+
+  const [todos, setTodos] = useState<Todo[]>([{ id: 0, message: "Hello" }]);
   const addTodo = (message: Todo["message"]) => {
-    setTodos([...todos, { message }]);
+    setTodos([...todos, { message, id: extractId() }]);
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,9 +31,10 @@ export default function Todos() {
         <input type="text" name="message" />
       </form>
       <ul>
-        {todos.map((todo, id) => (
+        {todos.map(({ message, id }) => (
           <li key={id}>
-            <h2 className="text-3xl">{todo.message}</h2>
+            {id}
+            <h2 className="text-3xl">{message}</h2>
           </li>
         ))}
       </ul>
