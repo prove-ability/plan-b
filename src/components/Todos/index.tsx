@@ -24,6 +24,11 @@ export default function Todos() {
     if (!message) return;
     addTodo(message);
   };
+  const deleteTodoById = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { id } = e.currentTarget.dataset;
+    if (!id) return;
+    setTodos(todos.filter((todo) => todo.id !== Number(id)));
+  };
   return (
     <>
       <h1>TODO LIST</h1>
@@ -32,9 +37,11 @@ export default function Todos() {
       </form>
       <ul>
         {todos.map(({ message, id }) => (
-          <li key={id}>
-            {id}
+          <li key={id} className="flex items-center justify-between">
             <h2 className="text-3xl">{message}</h2>
+            <button data-id={id} onClick={deleteTodoById}>
+              삭제
+            </button>
           </li>
         ))}
       </ul>
