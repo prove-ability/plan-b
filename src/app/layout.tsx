@@ -4,7 +4,7 @@ import "./globals.css";
 import Modal from "@/components/Modal";
 
 const myFont = localFont({
-  src: "fonts/nanum-son_kang.ttf",
+  src: "../fonts/nanum-son_kang.ttf",
   display: "swap",
 });
 
