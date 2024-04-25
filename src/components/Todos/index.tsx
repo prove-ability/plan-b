@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 type Todo = {
@@ -37,12 +38,14 @@ export default function Todos() {
       </form>
       <ul>
         {todos.map(({ message, id }) => (
-          <li key={id} className="flex items-center justify-between">
-            <h2 className="text-3xl">{message}</h2>
-            <button data-id={id} onClick={deleteTodoById}>
-              삭제
-            </button>
-          </li>
+          <Link key={id} href={`/todo/${id}`}>
+            <li className="flex items-center justify-between">
+              <h2 className="text-3xl">{message}</h2>
+              <button data-id={id} onClick={deleteTodoById}>
+                삭제
+              </button>
+            </li>
+          </Link>
         ))}
       </ul>
     </>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Modal from "@/components/Modal";
+import { PropsWithChildren, ReactNode } from "react";
 
 const myFont = localFont({
   src: "../fonts/nanum-son_kang.ttf",
@@ -15,8 +16,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
+  modal,
+}: PropsWithChildren<{
+  modal: ReactNode;
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
@@ -27,6 +29,7 @@ export default function RootLayout({
         }
       >
         {children}
+        {modal}
         <Modal />
       </body>
     </html>

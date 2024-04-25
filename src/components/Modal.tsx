@@ -10,11 +10,13 @@ export default function Modal() {
     if (!state) return;
     modelEl.current?.showModal();
   }, [state]);
+  if (!state) return null;
   return (
     <dialog id="modal" className="modal" ref={modelEl}>
       <div className="modal-box">
-        <h3 className="font-bold text-lg">Hello!</h3>
-        <p className="py-4">Press ESC key or click outside to close</p>
+        <h3 className="font-bold text-lg">{state.title}</h3>
+        {state.content}
+        {/* <p className="py-4">Press ESC key or click outside to close</p> */}
       </div>
       <form method="dialog" className="modal-backdrop">
         <button>close</button>
