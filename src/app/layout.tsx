@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Modal from "@/components/Modal";
 import { PropsWithChildren, ReactNode } from "react";
 
 const myFont = localFont({
@@ -30,7 +29,6 @@ export default function RootLayout({
       >
         {children}
         {modal}
-        <Modal />
       </body>
     </html>
   );
