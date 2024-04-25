@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import TodoItem from "@/components/TodoList/item";
 import { FormEvent, useState } from "react";
 
 type Todo = {
@@ -8,7 +8,7 @@ type Todo = {
   message: string;
 };
 
-export default function Todos() {
+export default function TodoList() {
   const [id, setId] = useState(1);
   const extractId = () => {
     setId((id) => (id += 1));
@@ -38,14 +38,12 @@ export default function Todos() {
       </form>
       <ul>
         {todos.map(({ message, id }) => (
-          <Link key={id} href={`/todo/${id}`}>
-            <li className="flex items-center justify-between">
-              <h2 className="text-3xl">{message}</h2>
-              <button data-id={id} onClick={deleteTodoById}>
-                삭제
-              </button>
-            </li>
-          </Link>
+          <TodoItem
+            key={id}
+            id={id}
+            message={message}
+            deleteTodoById={deleteTodoById}
+          />
         ))}
       </ul>
     </>
